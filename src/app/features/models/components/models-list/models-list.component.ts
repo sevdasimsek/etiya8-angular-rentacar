@@ -12,7 +12,7 @@ import { ModelListItemDto } from '../../models/model-list-item-dto';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModelsListComponent implements OnInit {
-  public list!: ModelListItemDto[];
+  public models!: ModelListItemDto[];
 
 
   constructor(private modelsApiService: ModelsApiService,
@@ -23,7 +23,7 @@ export class ModelsListComponent implements OnInit {
   ngOnInit(): void {
     //Called after the constructor initialzing input peoperties
     this.modelsApiService.getList().subscribe((response) => {
-      this.list = response;
+      this.models = response;
       this.change.markForCheck(); //ChangeDetectionStrategy.OnPush // Asekronik olarak çalıştığı için bu satırı ekledik. 
     });
   }

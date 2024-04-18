@@ -20,24 +20,24 @@ export const routes: Routes = [
       {
         path: 'brands',
         component: BrandsListComponent
-     },
-    {
-       path: 'models',
-       component: ModelsListComponent
-    }
+      },
+      {
+        path: 'models',
+        component: ModelsListComponent
+      }
     ],
   },
   {
     path: 'layout-test',
-    component:TestPageComponent
+    component: TestPageComponent
   },
   //404 Not Found Page
   {
     path: '**',// Her path'de çalışır. Bu yüzden en sona yazılmalı.
-    redirectTo:'not-found'
+    redirectTo: 'not-found'
   },
   {
     path: 'not-found',
-    component:NotFoundComponent
+    component: NotFoundComponent
   },
 ];

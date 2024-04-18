@@ -1,10 +1,26 @@
-<!--ngFor-->
+<!-- 
 <p *ngFor="let item of list">{{item.id}} {{item.name}} </p>
 
-<!--ngFor + index -->
 <p *ngFor="let item of list; let i = index">{{i}}{{item.id}} {{item.name}} </p>
 
-<!--Angular 17 => For-->
 @for (item of list; track $index) {
 <p>{{item.name}} {{$index}}</p>
-}
+} -->
+
+<div class="col-md-9">
+    <div class="container" *ngIf="models">
+        <div class="row">
+            <div class="col-sm-3" *ngFor="let item of models">
+                <div class="card" style="width: 16rem;">
+                    <img src="{{item.imageUrl}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.name}}</h5>
+                        <p class="card-text">Model Year: {{item.modelYear}}</p>
+                        <p class="card-text">Daily Price: {{item.dailyPrice}}</p>
+                        <a class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
