@@ -1,1 +1,6 @@
-<p *ngFor="let item of list">{{item.id}} {{item.name}} </p>
+<p *ngFor="let item of brands"><a (click)="getModels(item.id)">{{item.id}} {{item.name}}</a> </p>
+<div *ngIf="models">
+    <p *ngFor="let item of models">
+        {{item.name}}
+    </p>
+</div>

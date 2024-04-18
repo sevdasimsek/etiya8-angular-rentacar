@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { BrandsApiService } from '../../services/brands-api.service';
 import { BrandListItemDto } from '../../models/brand-list-item-dto';
 import { CommonModule } from '@angular/common';
+import { ModelsApiService } from '../../../models/services/models-api.service';
+import { ModelListItemDto } from '../../../models/models/model-list-item-dto';
 
 @Component({
   selector: 'app-brands-list',
@@ -12,18 +14,27 @@ import { CommonModule } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BrandsListComponent implements OnInit {
-  public list! : BrandListItemDto[];
+  public brands!: BrandListItemDto[];
+  public models!: ModelListItemDto[];
 
 
-  constructor(private brandsApiService: BrandsApiService, 
+  constructor(private brandsApiService: BrandsApiService,
+    private modelsApiService: ModelsApiService,
     private change: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
     this.brandsApiService.getList().subscribe((response) => {
-      this.list = response;
+      this.brands = response;
       this.change.markForCheck();
     })
+  }
+
+  getModels(brandId: number) {
+    this.modelsApiService.getList().subscribe((response => {
+      this.models = response.filter(x => x.brandId == brandId);
+      this.change.markForCheck();
+    }))
   }
 
 }
