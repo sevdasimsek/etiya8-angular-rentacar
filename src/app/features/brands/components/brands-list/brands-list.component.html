@@ -1,7 +1,24 @@
-<p *ngFor="let item of brands"><a (click)="getModels(item.id)">{{item.id}} {{item.name}}</a> </p>
-<hr>
-<div *ngIf="models">
-    <p *ngFor="let item of models">
-        {{item.name}}
-    </p>
+<div class="row">
+    <div class="col-md-2">
+        <div class="list-group">
+            <a *ngFor="let item of brands" (click)="getModels(item.id)"
+                class="list-group-item list-group-item-action">{{item.name}}</a>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="container" *ngIf="models">
+            <div class="row">
+                <div class="col-sm-3" *ngFor="let item of models">
+                    <div class="card" style="width: 16rem;">
+                        <img src="{{item.imageUrl}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{item.name}}</h5>
+                            <p class="card-text">{{item.modelYear}} <br> {{item.dailyPrice}}</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
