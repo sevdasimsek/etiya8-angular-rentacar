@@ -9,9 +9,10 @@ import { BrandsListComponent } from '../../features/brands/components/brands-lis
   standalone: true,
   imports: [
     CommonModule,
-    MainLayoutComponent,
+    MainLayoutComponent, 
+    BrandsListComponent,
     ModelsListComponent,
-    BrandsListComponent],
+   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
 })
@@ -19,8 +20,7 @@ export class HomePageComponent {
 
   selectedBrandId: number | null = null;
 
-  onBrandSelect(brandId: number) {
-    console.log(brandId)
+  onBrandSelect(brandId: number | null) {
     this.selectedBrandId = brandId;
   }
 

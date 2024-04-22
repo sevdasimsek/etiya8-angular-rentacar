@@ -11,11 +11,15 @@ export class ModelsApiService {
   constructor(private http: HttpClient) { }
 
 
-  getList(): Observable<ModelListItemDto[]> {
-    return this.http.get<ModelListItemDto[]>('http://localhost:3000/models');
-    // .subscribe((response) => {
-    //   console.log(response);
-    // });
+  getList(brandId: number | null = null): Observable<ModelListItemDto[]> {
+    const requestQueryParams :any = {
+      //brandId: brandId
+    }
+    if(brandId != null) requestQueryParams.brandId = brandId; 
+    return this.http.get<ModelListItemDto[]>('http://localhost:3000/models', {
+      params: requestQueryParams // ?brandId=1
+    });
+
   }
 
   //subscribe'ın çalışma şekli

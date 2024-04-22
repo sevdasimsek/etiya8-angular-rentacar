@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ModelsApiService } from '../../services/models-api.service';
 import { ModelListItemDto } from '../../models/model-list-item-dto';
 
@@ -11,21 +11,37 @@ import { ModelListItemDto } from '../../models/model-list-item-dto';
   styleUrl: './models-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ModelsListComponent implements OnInit {
+export class ModelsListComponent implements OnInit, OnChanges {
+  @Input() brandId: number | null = null;
   public models!: ModelListItemDto[];
-
 
   constructor(private modelsApiService: ModelsApiService,
     private change: ChangeDetectorRef
   ) { }
 
 
+  //angular tarafında bir filtreleme
+  // get filteredList(): ModelListItemDto[]{
+  //   return this.models.filter((item) => item.brandId === this.brandId)
+  // }
+
+
   ngOnInit(): void {
-    //Called after the constructor initialzing input peoperties
-    this.modelsApiService.getList().subscribe((response) => {
+    //Component ilk yerleştirildiğinde tetiklenir.
+    this.getList();
+  }
+
+  getList() {
+    this.modelsApiService.getList(this.brandId).subscribe((response) => {
       this.models = response;
-      this.change.markForCheck(); //ChangeDetectionStrategy.OnPush // Asekronik olarak çalıştığı için bu satırı ekledik. 
+      this.change.markForCheck();
     });
+  }
+  //Her state değiştiğinde tetiklenir.
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['brandId'] && changes['brandId'].currentValue != changes['brandId'].previousValue){
+      this.getList();
+    }
   }
 
 

@@ -16,9 +16,9 @@ import { ModelListItemDto } from '../../../models/models/model-list-item-dto';
 export class BrandsListComponent implements OnInit {
   //JS Doc
   /**
-   * @returns brand id
+   * @returns brand id or null
    */
-  @Output() selectBrand = new EventEmitter<number>();
+  @Output() selectBrand = new EventEmitter<number | null>();
   //Event oluşturabilmek için EventEmitter kullanıyoruz.
   //Angular'ın bu eventi tanımlayabilmesi için Output dekoratörünü kullanıyoruz.
   public brands!: BrandListItemDto[];
@@ -44,7 +44,7 @@ export class BrandsListComponent implements OnInit {
     }))
   }
 
-  onBrandClick(brandId: number) {
+  onBrandClick(brandId: number | null)  {
     this.selectBrand.emit(brandId)
   }
 }
