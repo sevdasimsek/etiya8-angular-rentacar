@@ -11,10 +11,17 @@ import { BrandsListComponent } from '../../features/brands/components/brands-lis
     CommonModule,
     MainLayoutComponent,
     ModelsListComponent,
-  BrandsListComponent],
+    BrandsListComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
 })
 export class HomePageComponent {
-  
+
+  selectedBrandId: number | null = null;
+
+  onBrandSelect(brandId: number) {
+    console.log(brandId)
+    this.selectedBrandId = brandId;
+  }
+
 }

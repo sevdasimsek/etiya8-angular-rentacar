@@ -1,3 +1,4 @@
 
-<app-brands-list></app-brands-list>
+<app-brands-list (selectBrand)="onBrandSelect($event)"></app-brands-list>
+<!-- $event : event'in verdiği veriyi almamızı sağlayan özel bir keyword.-->
 <app-models-list></app-models-list>

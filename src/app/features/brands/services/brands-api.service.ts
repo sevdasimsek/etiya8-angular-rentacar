@@ -10,6 +10,7 @@ export class BrandsApiService {
 
   constructor(private http: HttpClient) { }
 
+  //refactory => magic string
   getList(): Observable<BrandListItemDto[]> {
     return this.http.get<BrandListItemDto[]>('http://localhost:3000/brands');
   }

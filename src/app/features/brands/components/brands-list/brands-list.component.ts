@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { BrandsApiService } from '../../services/brands-api.service';
 import { BrandListItemDto } from '../../models/brand-list-item-dto';
 import { CommonModule } from '@angular/common';
@@ -14,6 +14,13 @@ import { ModelListItemDto } from '../../../models/models/model-list-item-dto';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BrandsListComponent implements OnInit {
+  //JS Doc
+  /**
+   * @returns brand id
+   */
+  @Output() selectBrand = new EventEmitter<number>();
+  //Event oluşturabilmek için EventEmitter kullanıyoruz.
+  //Angular'ın bu eventi tanımlayabilmesi için Output dekoratörünü kullanıyoruz.
   public brands!: BrandListItemDto[];
   public models!: ModelListItemDto[];
 
@@ -37,4 +44,7 @@ export class BrandsListComponent implements OnInit {
     }))
   }
 
+  onBrandClick(brandId: number) {
+    this.selectBrand.emit(brandId)
+  }
 }

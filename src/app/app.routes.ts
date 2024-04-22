@@ -19,11 +19,11 @@ export const routes: Routes = [
     children: [
       {
         path: 'brands',
-        component: BrandsListComponent
+        component: HomePageComponent
       },
       {
         path: 'models',
-        component: ModelsListComponent
+        component: HomePageComponent
       }
     ],
   },
