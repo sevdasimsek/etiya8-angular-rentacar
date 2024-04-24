@@ -2,10 +2,12 @@
   display: block;
 }
 
-a, li {
+a,
+li {
   cursor: pointer;
 }
 
-a:hover {
-  color: red;
+a,
+li:hover {
+  color: dodgerblue;
 }
