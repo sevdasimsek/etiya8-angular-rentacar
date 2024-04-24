@@ -1,26 +1,6 @@
-<div class="row">
-    <div class="col-md-2">
-        <div class="list-group">
-            <a (click)="onBrandClick(null)" type="button">All</a>
-            <a *ngFor="let item of brands" (click)="onBrandClick(item.id)"
-                class="list-group-item list-group-item-action">{{item.name}}</a>
-        </div>
-    </div>
-    <div class="col-md-9">
-        <div class="container" *ngIf="models">
-            <div class="row">
-                <div class="col-sm-3" *ngFor="let item of models">
-                    <div class="card" style="width: 16rem;">
-                        <img src="{{item.imageUrl}}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{item.name}}</h5>
-                            <p class="card-text">Model Year: {{item.modelYear}} <br> Daily Price: {{item.dailyPrice}}
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, libero et harum alias quaerat vero?</p>
-                            <a class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="list-group">
+    <li class="list-group-item" (click)="onBrandClick(null)">All</li>
+    <li class="list-group-item list-group-item-action" *ngFor="let item of brands" (click)="onBrandClick(item.id)">
+        {{item.name}}
+    </li>
 </div>

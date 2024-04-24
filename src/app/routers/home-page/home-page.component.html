@@ -1,4 +1,12 @@
-
-<app-brands-list (selectBrand)="onBrandSelect($event)"></app-brands-list>
-<!-- $event : event'in verdiği veriyi almamızı sağlayan özel bir keyword.-->
-<app-models-list [brandId] = "selectedBrandId"></app-models-list>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <app-brands-list (selectBrand)="onBrandSelect($event)">
+                <!-- $event : event'in verdiği veriyi almamızı sağlayan özel bir keyword.-->
+            </app-brands-list>
+        </div>
+        <div class="col-md-9">
+            <app-models-list [brandId]="selectedBrandId"></app-models-list>
+        </div>
+    </div>
+</div>
